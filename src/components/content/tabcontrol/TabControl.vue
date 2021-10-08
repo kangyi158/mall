@@ -50,7 +50,6 @@ export default {
   line-height: 40px;
   background-color: white;
   font-size: 15px;
-  z-index: 9;
 }
 .tabcontrol div {
   flex: 1;
