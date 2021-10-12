@@ -1,55 +1,40 @@
 <template>
-  <Tabbar>
-    <TabbarItem path="/home">
-      <img src="~assets/img/tabbar/home.svg" alt="" slot="item_icon" />
-      <img
-        src="~assets/img/tabbar/home_active.svg"
-        alt=""
-        slot="item_icon_active"
-      />
-      <div slot="item_text">首页</div>
-    </TabbarItem>
-    <TabbarItem path="/categary">
-      <img src="~assets/img/tabbar/category.svg" alt="" slot="item_icon" />
-      <img
-        src="~assets/img/tabbar/category_active.svg"
-        alt=""
-        slot="item_icon_active"
-      />
-      <div slot="item_text">分类</div></TabbarItem
-    >
-    <TabbarItem path="/shopcart">
-      <img src="~assets/img/tabbar/shopcart.svg" alt="" slot="item_icon" />
-      <img
-        src="~assets/img/tabbar/shopcart_active.svg"
-        alt=""
-        slot="item_icon_active"
-      />
-      <div slot="item_text">购物车</div></TabbarItem
-    >
-    <TabbarItem path="/profile">
-      <img src="~assets/img/tabbar/profile.svg" alt="" slot="item_icon" />
-      <img
-        src="~assets/img/tabbar/profile_active.svg"
-        alt=""
-        slot="item_icon_active"
-      />
-      <div slot="item_text">我的</div></TabbarItem
-    >
-  </Tabbar>
+  <tab-bar>
+    <tab-bar-item link="/home">
+      <img slot="icon" src="~assets/img/tabbar/home.svg" alt="">
+      <img slot="active-icon" src="~assets/img/tabbar/home_active.svg" alt="">
+      <div slot="text">首页</div>
+    </tab-bar-item>
+    <tab-bar-item link="/category">
+      <img slot="icon" src="~assets/img/tabbar/category.svg" alt="">
+      <img slot="active-icon" src="~assets/img/tabbar/category_active.svg" alt="">
+      <div slot="text">分类</div>
+    </tab-bar-item>
+    <tab-bar-item link="/cart">
+      <img slot="icon" src="~assets/img/tabbar/cart.svg" alt="">
+      <img slot="active-icon" src="~assets/img/tabbar/cart_active.svg" alt="">
+      <div slot="text">购物车</div>
+    </tab-bar-item>
+    <tab-bar-item link="/profile">
+      <img slot="icon" src="~assets/img/tabbar/profile.svg" alt="">
+      <img slot="active-icon" src="~assets/img/tabbar/profile_active.svg" alt="">
+      <div slot="text">我的</div>
+    </tab-bar-item>
+  </tab-bar>
 </template>
 
-<script>
-import Tabbar from "components/common/tabBar/Tabbar.vue";
-import TabbarItem from "components/common/tabBar/TabbarItem.vue";
-export default {
-  name: "MainTabbar",
-  components: {
-    Tabbar,
-    TabbarItem,
-  },
-};
-</script>
+  <script>
+    import TabBar from 'common/tabbar/TabBar'
+    import TabBarItem from 'common/tabbar/TabBarItem'
 
-<style>
+    export default {
+      name: "MainTabBar",
+      components: {
+        TabBar, TabBarItem
+      }
+    }
+  </script>
+
+<style scoped>
+
 </style>

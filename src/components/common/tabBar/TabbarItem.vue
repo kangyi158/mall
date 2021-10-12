@@ -1,44 +1,51 @@
 <template>
-  <div class="tabbar_item" @click="itemClick">
-    <div v-if="!isActive"><slot name="item_icon"></slot></div>
-    <div v-else><slot name="item_icon_active"></slot></div>
-    <div :class="{ active: isActive }"><slot name="item_text"></slot></div>
+  <div id="tab-bar-item" @click="itemClick">
+    <div class="item-icon" v-show="!isActive"><slot name="icon"></slot></div>
+    <div class="item-active-icon" v-show="isActive"><slot name="active-icon"></slot></div>
+    <div class="item-text" :style="activeStyle"><slot name="text"></slot></div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "TabbarItem",
-  computed: {
-    isActive() {
-      return this.$route.path.indexOf(this.path) !== -1;
+	export default {
+		name: "TabBarItem",
+    props: {
+			link: {
+				type: String,
+        required: true
+      }
     },
-  },
-  props: {
-    path: String,
-  },
-  methods: {
-    itemClick() {
-      this.$router.replace(this.path);
+    computed: {
+			isActive() {
+				return this.$route.path.indexOf(this.link) !== -1
+      },
+      activeStyle() {
+				return this.isActive ? {'color': 'red'} : {}
+      }
     },
-  },
-};
+    methods: {
+			itemClick() {
+				this.$router.replace(this.link)
+      }
+    }
+	}
 </script>
 
-<style >
-.tabbar_item {
-  flex: 1;
-  text-align: center;
-  height: 49px;
-  font-size: 14px;
-}
-.tabbar_item img {
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-  margin: 2px;
-}
-.active {
-  color: #f34462;
-}
+<style scoped>
+  #tab-bar-item {
+    flex: 1;
+  }
+
+  .item-icon img, .item-active-icon img {
+    width: 24px;
+    height: 24px;
+    margin-top: 5px;
+    vertical-align: middle;
+  }
+
+  .item-text {
+    font-size: 12px;
+    margin-top: 3px;
+    color: #333;
+  }
 </style>
